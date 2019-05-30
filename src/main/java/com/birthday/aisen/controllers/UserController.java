@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/user")
 @CrossOrigin()
-@Api(tags= "用户管理->获取用户信息")
+@Api(tags = "用户管理->获取用户信息")
 public class UserController {
 
     @Autowired
@@ -28,6 +28,7 @@ public class UserController {
         return new ResponseEntity<>(info, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "根据用户名搜索用户", notes = "用户管理", httpMethod = "GET")
     @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<UserDTO>> searchUser(String q) {
         List<UserDTO> info = userService.getUsersByName(q);
